@@ -1,0 +1,2 @@
+Timestamp,Transaction Type,Asset,Quantity Transacted,Spot Price Currency,Spot Price at Transaction,Subtotal,Total (inclusive of fees),Fees,Notes
+2021-05-01T08:34:40Z,Buy,LINK,372.7417978000000000,GBP,20.07,7483.16,7500.10,16.94,"Bought 372.7417978 LINK for £7,500.10 GBP"
