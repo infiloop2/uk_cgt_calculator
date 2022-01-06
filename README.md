@@ -1,8 +1,8 @@
-# IBKR,Coinbase,Binance Trades Parser + CGT calculator (UK Rules)
+# UK CGT calculator
 
 ## To run
 
-If you want to make a report for tax year Apr 2020 - Ape 2021 use:
+If you want to make a report for tax year Apr 2020 - Apr 2021 use:
 
 - For stocks: ```python3 main_ibkr.py 2020```
 - For crypto: ```python3 main_crypto.py 2020```
@@ -19,21 +19,21 @@ If you want to make a report for tax year Apr 2020 - Ape 2021 use:
  you opened your accounts (and not just the tax year in focus) since your cost basis is dependent on your past trades
 - This calculator handles
     - Uses UK cost averaging, with daily GBP rates used
-    - Matches Disposals based on 30-day bed and breakfast rule -> Sec 104 Matching -> Future buys
+    - Matches Disposals in this order: Same Day -> 30-day bed and breakfast rule -> Sec 104 Matching -> Buys after 30 days
     - Handles option expiry, assignment
     - Handles crypto trades and staking / earn interest
     - Does not include FX transactions. Unclear if currency held in accounts should be liable to CGT upon exchange back to GBP
 
 ## Support
 
-- IBKR: You need to download monthly tradelog exports from IBKR. Store them as Data/IBKR/ibkr....
-- Coinbase: Download all transactions in csv format. Store them as Data/Coinbase/coinbase....   
+- IBKR: You need to download monthly tradelog exports from IBKR. Store them as Data/IBKR/ibkr_monthly.csv
+- Coinbase: Download all transactions in csv format. Store them as Data/Coinbase/coinbase.csv
     - There are 2 tricky transactions: sends and receives from external wallets, make sure you handle them correctly.
-    - Either you ignore them if you sent them to yourself on a different exchange / wallet or consider them as a disposal if you used them up on the blockchain.
+    - Either you ignore them if you sent them to yourself or consider them as a disposal if you used them up on the blockchain.
     - By default these are ignored
-- Coinbase Pro: Download all transactions in csv format.Store them as Data/CoinbasePro/coinbase....
-    - By default Deposits and Withdrawals are ignored (usually they are through coinbase itself)
+- Coinbase Pro: Download all transactions in csv format.Store them as Data/CoinbasePro/coinbasepro.csv
+    - By default deposits and withdrawals are ignored (usually they are through coinbase itself)
 - Binance: Download trade reports per quarter:
-    - Combined account statements (Useful for Spot and Earn accounts). Store them as Data/Binance/binance_all....
-    - Cross margin. Store them as Data/Binance/binance_cross_margin....
-    - Isolated margin. Store them as Data/Binance/binance_isolated_margin....
+    - Combined account statements (Needed for Spot and Earn accounts). Store them as Data/Binance/binance_all_monthly.csv
+    - Cross margin. Store them as Data/Binance/binance_cross_margin_monthly.csv
+    - Isolated margin. Store them as Data/Binance/binance_isolated_margin_monthly.csv
